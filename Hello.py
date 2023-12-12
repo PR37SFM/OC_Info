@@ -10,3 +10,6 @@ img = Image.open(image_to_change)
 #image.putpixel((x, y), new_color)
 
 img.show()
+
+d = "farouk"
+print(d)
