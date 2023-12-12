@@ -9,7 +9,4 @@ img = Image.open(image_to_change)
 # pixel = image.getpixel((x, y))
 #image.putpixel((x, y), new_color)
 
-img.show()
-
-d = "farouk"
-print(d)
+img.show() fhfsbf
