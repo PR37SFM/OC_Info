@@ -9,4 +9,9 @@ img = Image.open(image_to_change)
 # pixel = image.getpixel((x, y))
 #image.putpixel((x, y), new_color)
 
-img.show() fhfsbf
+img.show()
+
+d = "farouk"
+print(d)
+
+print("monsieur kénan hofstetter")
