@@ -13,3 +13,5 @@ img.show()
 
 d = "farouk"
 print(d)
+
+print("monsieur kénan hofstetter")
