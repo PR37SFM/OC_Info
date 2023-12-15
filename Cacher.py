@@ -1,5 +1,3 @@
-
-
 from PIL import Image
 
 image_to_change = "lapin.jpeg"
