@@ -58,4 +58,10 @@ le message à dissimuler
 le fichier image dans lequel dissimuler le message
 le nom du fichier image à utiliser pour sauvegarder l'image contenant le message
 
+Journal de Bord:
+
+Jeudi 14 décembre, Farouk + Kénan: Début du code. Ajout de fonction changeant la valeur Red de tout les pixels d'une images en valeur pair.
+
+Vendredi 15 décembre, Kénan:
+
 ## toto
