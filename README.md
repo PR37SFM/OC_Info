@@ -62,6 +62,6 @@ Journal de Bord:
 
 Jeudi 14 décembre, Farouk + Kénan: Début du code. Ajout de fonction changeant la valeur Red de tout les pixels d'une images en valeur pair.
 
-Vendredi 15 décembre, Kénan:
+Vendredi 15 décembre, Kénan: Création de 5 fonctions ()
 
 ## toto
