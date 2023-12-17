@@ -3,7 +3,7 @@ from PIL import Image
 
 ### À changer pour input
 
-image_to_solve = "image_changed.jpeg"
+image_to_solve = "/Users/Kenan/Documents/OC_Info_Projet/image_changed.jpeg"
 
 
 ### À changer pour input
@@ -13,6 +13,9 @@ img = Image.open(image_to_solve)
 
 largeur, hauteur = img.size
 
+
+
+
 def compter_impair_colonne (x):
     n_red_impair = 0
     for i in range(hauteur):
@@ -21,8 +24,8 @@ def compter_impair_colonne (x):
             n_red_impair = n_red_impair + 1
     return n_red_impair
 
+print(img.getpixel((0,0)))
 
-for x in range(largeur):
+for x in range(1):
    print(chr(compter_impair_colonne(x)))
 
-img.show()
