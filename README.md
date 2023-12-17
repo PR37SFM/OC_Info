@@ -62,6 +62,8 @@ Journal de Bord:
 
 Jeudi 14 décembre, Farouk + Kénan: Début du code. Ajout de fonction changeant la valeur Red de tout les pixels d'une images en valeur pair.
 
-Vendredi 15 décembre, Kénan: Création de 5 fonctions ()
+Vendredi 15 décembre, Kénan: Création de 5 fonctions (). Le code qui cache le message marche pour cas particulier
+
+Dimanche 17 décembre, Kénan: definition + ou - clair des docstring de chaque fonction puis passage au cas général avec deux input.
 
 ## toto
