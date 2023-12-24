@@ -3,10 +3,8 @@ from PIL import Image
 
 ### À changer pour input
 
-image_to_solve = "/Users/Kenan/Documents/OC_Info_Projet/image_changed.png"
+image_to_solve = input("Donne moi le nom du fichier qui contient le message caché: ")
 
-
-### À changer pour input
 
 
 img = Image.open(image_to_solve)
