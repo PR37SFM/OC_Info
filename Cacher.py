@@ -10,13 +10,15 @@ def changeRGB(img, x,y):
     """
     Cette fonction prend la valeur R d'un pixel et la rend pair.
     """
-    red, green, blue = img.getpixel((x,y))
-    if red == 255:
-        red = red - 1
+    color = img.getpixel((x, y))
+    
+    if color[0] == 255:
+        color = (color[0] - 1, color[1], color[2])
     else:
-        if red%2 == 1:
-            red = red + 1
-    img.putpixel((x, y), (red,green, blue))
+        if color[0] % 2 == 1:
+            color = (color[0] + 1, color[1], color[2])
+    
+    img.putpixel((x, y), color)
 
 
 
@@ -59,9 +61,9 @@ def cache_nombre_sur_une_colonne(img,x):
     """
     largeur, hauteur = img.size    
     for i in liste_coordonnées_alea(hauteur, numeriser_message(message)[x]):
-        red, green, blue = img.getpixel((x,i))
+        red, green, blue, alpha = img.getpixel((x,i))
         red = red + 1
-        img.putpixel((x,i),(red, green, blue))
+        img.putpixel((x,i),(red, green, blue,alpha))
 
 
 
@@ -84,43 +86,15 @@ def cacher_message(image_to_change,message):
     for x in range(len(message)):
         cache_nombre_sur_une_colonne(img,x)
     
-    img.save("image_changed.jpeg")
+    img.save("image_changed.png")
 
     img.close()
     
 
 
         
-message = input("Ecris-moi le message que tu veux caché dans l'image:")
+message = input("Ecris-moi le message que tu veux cacher dans l'image:")
 
 image_to_change = input("Ecris-moi le nom du fichier jpeg de l'image où tu veux cacher un message:")
 
 cacher_message(image_to_change,message)
-
-
-
-
-
-"""
-
-Ici, on a la version de trouver le message qui marche mais seulement ici.
-
-
-
-def compter_impair_colonne (img, x):
-    
-    largeur, hauteur = img.size
-    
-    n_red_impair = 0
-    for i in range(hauteur):
-        red, green, blue = img.getpixel((x,i))
-        if red%2 == 1:
-            n_red_impair = n_red_impair + 1
-    return n_red_impair
-
-
-
-for x in range(len(message)):
-    print(chr(compter_impair_colonne(img,x)))
-    
-    """
