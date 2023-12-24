@@ -62,8 +62,12 @@ Journal de Bord:
 
 Jeudi 14 décembre, Farouk + Kénan: Début du code. Ajout de fonction changeant la valeur Red de tout les pixels d'une images en valeur pair.
 
-Vendredi 15 décembre, Kénan: Création de 5 fonctions (). Le code qui cache le message marche pour cas particulier
+Vendredi 15 décembre, Kénan: Création de 5 fonctions (à remplir). Le code qui cache le message marche pour les cas qui lui ont été atribué (toujours pas d'input). Codage du programme qui retrouve le message. Il marche quand on le met dans le même fichier .py mais pas dans le nouveau, on reviendra la dessus.
 
-Dimanche 17 décembre, Kénan: definition + ou - clair des docstring de chaque fonction puis passage au cas général avec deux input.
+Dimanche 17 décembre, Kénan: definition + ou - clair des docstrings de chaque fonction puis passage au cas général avec deux inputm pour le programme qui permet de caché le message. 
+
+Jeudi 21 décembre, Kénan: changement de jpeg à png. Resolution du programme avec le fichier retrouvr.py -> le code qui permet de retrouver le message fonction.
+
+Dimanche 25 décembre, Kénan: ajout de l'input qui permet à l'utilisateur de choisir le nom du fichier modifier (dans le code cacher.py) et ajout de l'input dans le code retrouver.py
 
 ## toto
