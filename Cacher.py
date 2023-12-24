@@ -68,13 +68,14 @@ def cache_nombre_sur_une_colonne(img,x):
 
 
 
-def cacher_message(image_to_change,message):
+def cacher_message(image_to_change,message,image_changed):
 
     """
     input: (string,string)
     
     Cette fonction demande comme premier argument le nom du fichier jpeg de l'image dans laquelle l'utilisateur veut cacher un message.
     Puis comme 2ème argument le message que l'utilisateur veut cacher.
+    Puis comme 3ème argument le nom du fichier dans lequel l'image modifiée sera enregistrée
     """
     img = Image.open(image_to_change)
     largeur, hauteur = img.size
@@ -86,15 +87,17 @@ def cacher_message(image_to_change,message):
     for x in range(len(message)):
         cache_nombre_sur_une_colonne(img,x)
     
-    img.save("image_changed.png")
+    img.save(image_changed)
 
     img.close()
     
 
 
         
-message = input("Ecris-moi le message que tu veux cacher dans l'image:")
+message = input("Ecris-moi le message que tu veux cacher dans l'image: ")
 
-image_to_change = input("Ecris-moi le nom du fichier jpeg de l'image où tu veux cacher un message:")
+image_to_change = input("Ecris-moi le nom du fichier jpeg de l'image où tu veux cacher un message: ")
 
-cacher_message(image_to_change,message)
+image_changed = input("Ecris le nom du fichier dans lequel ton image modifiée sera enregistrée: ")
+
+cacher_message(image_to_change,message,image_changed)
