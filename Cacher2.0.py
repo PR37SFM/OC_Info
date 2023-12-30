@@ -1,5 +1,21 @@
 from PIL import Image
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #CODAGE
 
 #Etape 1 : créer un alphabet de a-z + A-Z + numéro + caractère spéciaux visibles (/!\ pas ceux non visibles et inutiles),
@@ -11,11 +27,11 @@ from PIL import Image
 
 #Etape 4 : fonction qui traite chaque ligne vertical de l'image, une par une, caractère par caractère.
 
-#Etape 5 : compare chaque valeur R-G-B-A de tous les pixels de la ligne avecvaleur numérique du message.
+#Etape 5 : compare chaque valeur R-G-B-A de tous les pixels de la ligne avec valeur numérique du message.
 
 #Etape 6 : pixel dont la valeur est la plus proche de celle du message est remplacé.
 
-#Etape 7 : renvoi l'image avec tout le message caché dans cahque ligne vertical de l'image dans le sens -> horinzontal.
+#Etape 7 : renvoi l'image avec tout le message caché dans chaque ligne vertical de l'image dans le sens -> horinzontal.
 
 
 
