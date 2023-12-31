@@ -1,18 +1,40 @@
 from PIL import Image
 
 
+#Cryptage du message
+message = input("inserez un message")
+DemandeCryptage = input("Voulez-vous crypté votre message avec une clé ?")
+if DemandeCryptage.lower() == "oui" or "non":
+    if "oui" == DemandeCryptage.lower():
+        clé = input("inserez votre clé. Attention! ne pas mettre plus d'une fois le même caractère.")
+    elif "non" == DemandeCryptage.lower():
+        None
+else:
+    print("veuillez répondre à la question par oui ou par non.")
+
+def Cryptage(message, clé):
+    alphabetNormal = "abcdefghijklmnopqrstuvwxyz"
+    alphabizzare = ""
+    alphabizzare += clé
+    for lettre in alphabetNormal:
+        if lettre not in clé:
+            alphabizzare += lettre
+    messageCrypte = ""
+    for lettre0 in message:
+        if lettre0 not in alphabizzare:
+            messageCrypte += lettre0
+        else:
+            pos = alphabetNormal.index(lettre0)
+            newlettre = alphabizzare[pos]
+            newlettre = newlettre.upper()
+            messageCrypte += newlettre
+    return messageCrypte
 
 
 
-AlphabetNormal = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-
-print(len(AlphabetNormal))
 
 
 
-
-a = "␁"
-print(a)
 
 
 
