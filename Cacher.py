@@ -36,8 +36,8 @@ def numeriser_message(message):
     return message_en_ascii
 
 
-        
-    
+
+
 def liste_coordonnées_alea (hauteur, n_coord_aléa):
     """
     input:  1 int -> output: 1 new_liste
