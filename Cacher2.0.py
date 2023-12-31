@@ -4,12 +4,15 @@ from PIL import Image
 
 
 
+AlphabetNormal = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+
+print(len(AlphabetNormal))
 
 
 
 
-
-
+a = "␁"
+print(a)
 
 
 
