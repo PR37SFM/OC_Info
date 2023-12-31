@@ -55,3 +55,12 @@ for x in range(largeur):
         print(img.getpixel((x,y)))
         
 """
+
+
+m = "Bb"
+
+n = "CC"
+
+c = m + n
+
+print(c)
