@@ -1,52 +1,47 @@
-from PIL import Image
-
-
-#Cryptage du message
-message = input("inserez un message")
-DemandeCryptage = input("Voulez-vous crypté votre message avec une clé ?")
-if DemandeCryptage.lower() == "oui" or "non":
-    if "oui" == DemandeCryptage.lower():
-        clé = input("inserez votre clé. Attention! ne pas mettre plus d'une fois le même caractère.")
-    elif "non" == DemandeCryptage.lower():
-        None
-else:
-    print("veuillez répondre à la question par oui ou par non.")
-
-def Cryptage(message, clé):
-    alphabetNormal = "abcdefghijklmnopqrstuvwxyz"
-    alphabizzare = ""
-    alphabizzare += clé
-    for lettre in alphabetNormal:
-        if lettre not in clé:
-            alphabizzare += lettre
-    messageCrypte = ""
-    for lettre0 in message:
-        if lettre0 not in alphabizzare:
-            messageCrypte += lettre0
-        else:
-            pos = alphabetNormal.index(lettre0)
-            newlettre = alphabizzare[pos]
-            newlettre = newlettre.upper()
-            messageCrypte += newlettre
-    return messageCrypte
-
-
-
-
-
-
-
-
-
-
-
-
 #CODAGE
 
-#Etape 1 : créer un alphabet de a-z + A-Z + numéro + caractère spéciaux visibles (/!\ pas ceux non visibles et inutiles),
-#puis introduire une clé mode Cesar2 (optionnel pour l'utilisateur).
+from PIL import Image
+import logging
+
+#Etape 1 : créer un alphabet de a-z + A-Z + numéro + caractère spéciaux visibles (/!\ pas ceux non visibles et inutiles).
 
 #Etape 2 : attribuer à chaque caractère un nombre impaire. /!\ pas dépasser 255. Puis transformer message.
+
+logging.basicConfig(level=logging.INFO)
+
+image_in_filename = 'google.png'                                            #input
+image_out_filename = 'google_changed.png'                                   #input
+message = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'        #input
+
+logging.info('open image=%s', image_in_filename)
+image = Image.open(image_in_filename)
+logging.info('image height=%s width=%s size=%s', image.height, image.width, image.size)
+image = image.convert('RGB')
+
+len_message = len(message)
+coord_x = 19
+coord_y = 10
+old_pixel = image.getpixel((coord_x,coord_y))
+old_green = old_pixel[1]
+new_green = len_message
+new_pixel = (old_pixel[0], new_green, old_pixel[2])
+image.putpixel((coord_x,coord_y), new_pixel)
+logging.info('message size=%s x=%s y=%s og=%s ng=%s', len_message, coord_x, coord_y, old_green, new_green)
+
+index = 0
+for letter in message:
+    coord_x = 20 + index
+    coord_y = 10
+    old_pixel = image.getpixel((coord_x,coord_y))
+    old_green = old_pixel[1]
+    new_green = ord(letter)
+    new_pixel = (old_pixel[0], new_green, old_pixel[2])
+    image.putpixel((coord_x,coord_y), new_pixel)
+    logging.info('lettre traité =%s x=%s y=%s og=%s ng=%s', letter, coord_x, coord_y, old_green, new_green)
+    index = index + 1
+
+logging.info('write image=%s', image_out_filename)
+image.save(image_out_filename)
 
 #Etape 3 : rendre R-G-B-A tous pair en faisant +1 lorsque impaire.
 
@@ -57,15 +52,3 @@ def Cryptage(message, clé):
 #Etape 6 : pixel dont la valeur est la plus proche de celle du message est remplacé.
 
 #Etape 7 : renvoi l'image avec tout le message caché dans chaque ligne vertical de l'image dans le sens -> horinzontal.
-
-
-
-#DECODAGE
-
-#Etape 1 : redemande si il y'avait une clé ou non, si oui introduire la clé.
-
-#Etape 2 : formation de l'alphabet.
-
-#Etape 3 : analyse de chaque valeur R-G-B-A de tout les pixels, puis prend la valeur impaire si il en trouve.
-
-#Etape 4 : retranscription des valeurs trouvés en alphabet normal.
