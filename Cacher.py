@@ -77,19 +77,23 @@ def cacher_message(image_to_change,message,image_changed):
     Puis comme 2ème argument le message que l'utilisateur veut cacher.
     Puis comme 3ème argument le nom du fichier dans lequel l'image modifiée sera enregistrée
     """
+        
     img = Image.open(image_to_change)
     largeur, hauteur = img.size
     
-    for x in range(largeur):
-        for y in range(hauteur):
-            changeRGB(img,x,y)
+    if len(message) > largeur:
+        print("Votre message est trop long pour l'image")
+    else:
+        for x in range(largeur):
+            for y in range(hauteur):
+                changeRGB(img,x,y)
 
-    for x in range(len(message)):
-        cache_nombre_sur_une_colonne(img,x)
-    
-    img.save(image_changed)
+        for x in range(len(message)):
+            cache_nombre_sur_une_colonne(img,x)
+        
+        img.save(image_changed)
 
-    img.close()
+        img.close()
     
 
 
