@@ -1,17 +1,11 @@
-#CODAGE
-
 from PIL import Image
 import logging
 
-#Etape 1 : créer un alphabet de a-z + A-Z + numéro + caractère spéciaux visibles (/!\ pas ceux non visibles et inutiles).
-
-#Etape 2 : attribuer à chaque caractère un nombre impaire. /!\ pas dépasser 255. Puis transformer message.
-
 logging.basicConfig(level=logging.INFO)
 
-image_in_filename = 'google.png'                                            #input
-image_out_filename = 'google_changed.png'                                   #input
-message = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'        #input
+image_in_filename = 'google.png'
+image_out_filename = 'google_changed.png'
+message = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 
 logging.info('open image=%s', image_in_filename)
 image = Image.open(image_in_filename)
@@ -42,13 +36,3 @@ for letter in message:
 
 logging.info('write image=%s', image_out_filename)
 image.save(image_out_filename)
-
-#Etape 3 : rendre R-G-B-A tous pair en faisant +1 lorsque impaire.
-
-#Etape 4 : fonction qui traite chaque ligne vertical de l'image, une par une, caractère par caractère.
-
-#Etape 5 : compare chaque valeur R-G-B-A de tous les pixels de la ligne avec valeur numérique du message.
-
-#Etape 6 : pixel dont la valeur est la plus proche de celle du message est remplacé.
-
-#Etape 7 : renvoi l'image avec tout le message caché dans chaque ligne vertical de l'image dans le sens -> horinzontal.
