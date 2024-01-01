@@ -4,12 +4,12 @@ from module_03 import bit_in_pixel, octet_to_letter
 
 logging.basicConfig(level=logging.INFO)
 
-image_in_filename = 'google_changed.png'
+image_in_filename = 'farouk_changed.jpg'
 
 logging.info('open image=%s', image_in_filename)
 image = Image.open(image_in_filename)
 logging.info('image height=%s width=%s size=%s', image.height, image.width, image.size)
-image = image.convert('RGB')
+#image = image.convert('RGB')
 
 coord_x = 0
 coord_y = 0
@@ -26,7 +26,7 @@ while end_message == 0:
             end_message = 1
         else:
             letter = octet_to_letter (binary)
-            logging.info('binary=%s letter=%s', binary, letter)
+            logging.info('binary=%s letter=%s x=%s y=%s', binary, letter, coord_x, coord_y)
             message = message + letter
             binary = ''
     # coordinate of next pixel
