@@ -4,8 +4,8 @@ from module_03 import char_to_octet, modify_pixel
 
 logging.basicConfig(level=logging.DEBUG)
 
-image_in_filename = 'warga.png'
-image_out_filename = 'warga_changed.png'
+image_in_filename = 'farouk.png'
+image_out_filename = 'farouk_changed.png'
 message = """
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend lacus ac erat feugiat rhoncus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla in nisl non commodo. Mauris tincidunt nisi ut varius laoreet. Nulla sagittis pulvinar elementum. Cras ac mi sit amet odio vulputate iaculis at eget arcu. Sed tempor ante vitae lectus congue, in fringilla purus lobortis. Nam interdum vulputate metus, sit amet euismod eros porttitor in. Nulla massa sem, tempor non suscipit vitae, scelerisque quis elit. Donec tristique lectus eu massa ultrices, eu blandit orci eleifend.
 

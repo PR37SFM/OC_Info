@@ -4,7 +4,7 @@ from module_03 import bit_in_pixel, octet_to_char
 
 logging.basicConfig(level=logging.INFO)
 
-image_in_filename = 'warga_changed.png'
+image_in_filename = 'farouk_changed.png'
 
 logging.info('open image=%s', image_in_filename)
 image = Image.open(image_in_filename)
