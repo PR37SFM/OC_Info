@@ -35,7 +35,7 @@ coord_x = 0
 coord_y = 0
 
 for char in message:
-    octet = char_to_octet (char)
+    octet = char_to_octet(char)
     logging.info('char=%s octet=%s coord=%s', char, octet, (coord_x, coord_y))
     for bit in octet:
         old_pixel = image.getpixel((coord_x, coord_y))
