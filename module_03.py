@@ -1,3 +1,4 @@
+import os
 
 def char_to_octet (char):
     char_int = ord (char)
@@ -36,6 +37,30 @@ def bit_in_pixel (pixel):
         return '0'
     else:
         return '1'
+    
+def input_text(message, max_size):
+    text = input(message)
+    while len(text) == 0 or len(text) >= max_size:
+        print('! text is empty or too big')
+        text = input(message)
+    return text
+    
+def input_filename(message):
+    filename = input(message)
+    while not os.path.isfile(filename):
+        print('! file not found')
+        filename = input(message)
+    return filename
+
+def input_new_filename(message):
+    filename_out = input(message)
+    while len(filename_out) == 0:
+        print('! text is empty')
+        filename_out = input(message)
+    filename_out = filename_out + '.png'
+    return filename_out
+
+
 
 """
 

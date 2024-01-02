@@ -4,7 +4,7 @@ from module_03 import bit_in_pixel, octet_to_char
 
 logging.basicConfig(level=logging.INFO)
 
-image_in_filename = 'farouk_changed.png'
+image_in_filename = 'warga_changed.png'
 
 logging.info('open image=%s', image_in_filename)
 image = Image.open(image_in_filename)
@@ -15,13 +15,15 @@ message = ''
 octet = ''
 coord_x = 0
 coord_y = 0
+eom_found = 0
 
-while 1 == 1:
+while True:
     pixel = image.getpixel((coord_x, coord_y)) 
     bit = bit_in_pixel (pixel)
     octet = octet + bit
     if len(octet) == 8:
         if octet == '00000000':
+            eom_found = 1
             break
         else:
             char = octet_to_char(octet)
@@ -36,4 +38,9 @@ while 1 == 1:
     if coord_y == image.height:
         break
 
-print(message)
+logging.info('eom_found=%s', eom_found)
+        
+if eom_found == 1:
+    print(message)
+else:
+    print('pas de message')
