@@ -1,13 +1,11 @@
-from PIL import Image
 import logging
-from module_03 import letter_to_octet, modify_pixel
+from PIL import Image
+from module_03 import char_to_octet, modify_pixel
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 
-
-    
-image_in_filename = 'farouk.jpg'
-image_out_filename = 'farouk_changed.jpg'
+image_in_filename = 'warga.png'
+image_out_filename = 'warga_changed.png'
 message = """
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend lacus ac erat feugiat rhoncus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla in nisl non commodo. Mauris tincidunt nisi ut varius laoreet. Nulla sagittis pulvinar elementum. Cras ac mi sit amet odio vulputate iaculis at eget arcu. Sed tempor ante vitae lectus congue, in fringilla purus lobortis. Nam interdum vulputate metus, sit amet euismod eros porttitor in. Nulla massa sem, tempor non suscipit vitae, scelerisque quis elit. Donec tristique lectus eu massa ultrices, eu blandit orci eleifend.
 
@@ -25,28 +23,26 @@ Pellentesque maximus diam ac varius semper. Fusce condimentum, lacus ac hendreri
 
 In hac habitasse platea dictumst. Ut porta malesuada metus, vel varius dolor lobortis at. Etiam ullamcorper odio quis turpis elementum pretium. Nullam eu orci posuere nibh luctus placerat. Nunc accumsan semper egestas. Phasellus in commodo nulla, eget viverra turpis. Nunc sit amet urna a orci varius pulvinar ut et mauris. Mauris felis dui, mollis at ex dapibus, egestas scelerisque eros. Morbi porta diam lorem, et venenatis ipsum ornare a. Nam fermentum est vel tristique interdum.
 """
-#message = 'Lor'
-
 
 logging.info('open image=%s', image_in_filename)
 image = Image.open(image_in_filename)
 logging.info('image height=%s width=%s size=%s', image.height, image.width, image.size)
-#image = image.convert('RGB')
+image = image.convert('RGB')
 
+# add end char to message
+message = message + chr(0)
 coord_x = 0
 coord_y = 0
 
-message = message + chr(0)
-
-for letter in message:
-    binary = letter_to_octet (letter)
-    logging.info('letter=%s binary=%s x=%s y=%s', letter, binary, coord_x, coord_y)
-    for bit in binary:
+for char in message:
+    octet = char_to_octet (char)
+    logging.info('char=%s octet=%s coord=%s', char, octet, (coord_x, coord_y))
+    for bit in octet:
         old_pixel = image.getpixel((coord_x, coord_y))
         new_pixel = modify_pixel (old_pixel, bit)
-        image.putpixel((coord_x,coord_y), new_pixel)
-        # logging.info('    letter=%s bin=%s bit=%s x=%s y=%s old=%s new%s', letter, binary, bit, coord_x, coord_y, old_pixel, new_pixel)
-        # coordinate of next pixel
+        image.putpixel((coord_x, coord_y), new_pixel)
+        # logging.info('    bit=%s coord=%s old=%s new%s', bit, (coord_x, coord_y), old_pixel, new_pixel)
+        # coord of next pixel
         coord_x = coord_x + 1
         if coord_x == image.width:
             coord_x = 0
@@ -55,14 +51,3 @@ for letter in message:
 logging.info('write image=%s', image_out_filename)
 image.save(image_out_filename)
  
- 
-        
-
- 
-
-
-
-
-
-
-
