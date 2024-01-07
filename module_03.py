@@ -5,7 +5,7 @@ def char_to_octet (char):
     char_octet = bin (char_int)
     # remove 2 first chars (0b)
     char_octet = char_octet[2:]
-    # add 0 to have exactly 8 chars
+    # add 0 before to have exactly 8 chars
     while len (char_octet) < 8:
         char_octet = '0' + char_octet
     return char_octet
@@ -38,55 +38,24 @@ def bit_in_pixel (pixel):
     else:
         return '1'
     
-def input_text(message, max_size):
+def input_text(message, min_length, max_length):
     text = input(message)
-    while len(text) == 0 or len(text) >= max_size:
-        print('! text is empty or too big')
+    while len(text) < min_length or len(text) > max_length:
+        print('! text must have length between {0} and {1}'.format(min_length, max_length))
         text = input(message)
     return text
     
 def input_filename(message):
     filename = input(message)
     while not os.path.isfile(filename):
-        print('! file not found')
+        print('! file {0} not found'.format(filename))
         filename = input(message)
     return filename
 
-def input_new_filename(message):
+def input_new_filename(message, directory):
     filename_out = input(message)
     while len(filename_out) == 0:
         print('! text is empty')
         filename_out = input(message)
     filename_out = filename_out + '.png'
     return filename_out
-
-
-
-"""
-
-#print (char_to_octet ('a'))
-#print (char_to_octet ('ä'))
-#print (char_to_octet ('#'))
-#print (octet_to_char ('01100001'))
-#print (octet_to_char ('11100100'))
-#print (octet_to_char ('00100011'))
-
-#print (modify_pixel ((12,12,12), '0'))
-#print (modify_pixel ((12,12,13), '0'))
-#print (modify_pixel ((12,12,0), '0'))
-#print (modify_pixel ((12,12,255), '0'))
-#print (modify_pixel ((12,12,12), '1'))
-#print (modify_pixel ((12,12,13), '1'))
-#print (modify_pixel ((12,12,0), '1'))
-#print (modify_pixel ((12,12,255), '1'))
-
-#bit_in_pixel ((12,12,12))
-#bit_in_pixel ((12,12,13))
-#bit_in_pixel ((12,12,0))
-#bit_in_pixel ((12,12,255))
-#bit_in_pixel ((12,12,12))
-#bit_in_pixel ((12,12,13))
-#bit_in_pixel ((12,12,0))
-#bit_in_pixel ((12,12,255))
-
-"""
