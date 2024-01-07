@@ -2,7 +2,7 @@
 Projet Kénan-Farouk
 
 
-Ce projet consiste à créer un module Python permettant de faire de la stéganographie dans des images. Autrement dit, le programme deamndera à l'utilisateur le message qu'il veut dissimué ainsi que l'image qu'il veut utilisé. Et ensuite, le programme rendra la même image avec le message à dissimuler à l'interieur.
+Ce projet consiste à créer un module Python permettant de faire de la stéganographie dans des images. Autrement dit, le programme demandera à l'utilisateur le message qu'il veut dissimué ainsi que l'image qu'il veut utilisé. Et ensuite, le programme rendra la même image (un peu differente de l'intitiale) avec le message à dissimuler à l'interieur.
 
 Mode d'emploi:
 dire comment utiliser:
@@ -48,15 +48,27 @@ pixel -> (x,y,z)
 
 méthode 2:
 
+Encrypt_03:
 
+1. Le programme demande le path de l'image et y accède. S'il ne l'a pas trouvé, il le redemande.
+3. Le programme demande un message à dissimuler et le reçoit. S'il reçoit un message trop long ou trop court, il le redemande.
+4. Le programme demande un nom à l'image dans lequel sera dissimuler le message. S'il ne recoit rien, il renomme lui-même l'image.
+5. Le programme prépare le path où sera déposé le fichier image.
+6. Le programme ajoute le caractère [NULL] en ASCII au message.
+7. Le programme convertit le message, caractère par caractère, en valeur ASCII, puis en binnaire, ce qui va donner un octet pour chaque caractère.
+8. Le programme prend la valeur Blue d'un pixel et, en fonction de chaque bit de l'octet, la rend/garde pair s'il s'agit de '0' ou la rend/garde impair s'il s'agit de '1'.
+9. Le programme remplace le pixel traité par le même pixel avec la couleur bleu traité.
+10. Le programme traite pixel par pixel, en commençant (0;0) et en progressant sur l'horizontale, puis s'il arrive au bout, passe à la ligne horizontale au-dessous.
+11. Le programme arrête de progresser quand tout les caractères du message ont été traitées.
+12. Le programme renvoie l'image avec le message dissimulé.
 
+Decrypt_03:
 
-Le module devra contenir toutes les fonctions nécessaires pour dissimuler un message et le retrouver.
-De plus, le module devra être exécutable en tant que script, et dans ce cas devra demander à l'utilisateur :
-
-le message à dissimuler
-le fichier image dans lequel dissimuler le message
-le nom du fichier image à utiliser pour sauvegarder l'image contenant le message
+1. Le programme demande le path de l'image et y accède. S'il ne l'a pas trouvé, il le redemande.
+2. Le programme prend la valeur Blue d'un pixel et, en fonction de sa parité, determine le bit '0' ou '1', jusqu'à former un octet.
+3. Le programme transforme l'octet en ASCII, puis en caractère, et recommence pour le prochaine octet, jusqu'à que celui-ci indique la valeur binaire du caractère [NULL] de ASCII.
+4. Le programme traite pixel par pixel, en commençant (0;0) et en progressant sur l'horizontale, puis s'il arrive au bout, passe à la ligne horizontale au-dessous.
+5. Le programme imprime le message qu'il a trouvé, sauf s'il n'a pas trouvé le caractère [NULL] de ASCII.
 
 Journal de Bord:
 
@@ -69,5 +81,17 @@ Dimanche 17 décembre, Kénan: definition + ou - clair des docstrings de chaque 
 Jeudi 21 décembre, Kénan: changement de jpeg à png. Resolution du programme avec le fichier retrouvr.py -> le code qui permet de retrouver le message fonction.
 
 Dimanche 25 décembre, Kénan: ajout de l'input qui permet à l'utilisateur de choisir le nom du fichier modifier (dans le code cacher.py) et ajout de l'input dans le code retrouver.py
+
+Dimanche 31 décembre, Farouk + Kénan : discussion deuxième méthode
+                      Farouk : début et documentation sur la méthode n°2
+
+Lundi 1 janvier, Farouk : continuation du code avec création de 4 fonction pour cacher le message et le retrouver.
+
+Mardi 2 janvier, Farouk : continuation du code avec création de la limite de lecture du programme et du message (caractère [NULL] de ASCII) + création des inputs pour l'encryptage
+                          + plusieurs essais et test des cas limites.
+
+Dimanche 7 janvier, Farouk : leger changement du code et revision du contenu.
+
+Lundi 8 janvier, Farouk : mise-à-jour du Readme.md et ajout des docstrings et des fonctions tests.
 
 ## toto
