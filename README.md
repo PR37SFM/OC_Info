@@ -50,13 +50,24 @@ cacher:
 1. Ouvrir fichier python nommé "Encrypt_03.py" et executer le programme.
 2. Entrer le path de l'image (endroit où est déposé votre image au format png).
 3. Entrer un message avec des caractère ASCII de 0 à 255.
-3. Entrer le nouveau nom de l'image avec le message à l'interieur (optionnel).
-4. Ouvrir le fichier image qui est déposé au même endroit que l'image initiale.
+4. Entrer le nouveau nom de l'image avec le message à l'interieur (optionnel).
+5. Ouvrir le fichier image qui est déposé au même endroit que l'image initiale.
 
 retrouver:
 1. Ouvrir fichier python nommé "Encrypt_03.py"
 2. Entrer le path de l'image modifié.
 3. Si le terminal indique 'pas de message', la mauvaise image a été inseré. Relancer le programme en indiquant la bonne image.
+
+Sans script :
+
+cacher:
+1. Demander à la fonction encrypt_image de cacher le message en entrant le nom de l'image et le message.
+2. Le nom de l'image avec le message dissimulé est indiqué dans le terminal.
+
+retrouver:
+1. Demander à la fonction decrypt_image de retrouver le message caché dans une image en entrant le nom de l'image ou se trouve le message caché.
+2. Le message sera indiquer à l'utilisateur dans le terminal.
+
 
 
 # Idée : 
@@ -163,7 +174,7 @@ decoder_message:
 
 Méthode 2:
 
-
+Tout est indiqué dans les docstrings et plus haut, je n'ai rien de plus à ajouter (voir schéma_méthode_2.jpg).
 
 
 Journal de Bord:
@@ -195,5 +206,10 @@ Dimanche 7 janvier, Farouk : leger changement du code et revision du contenu.
 Lundi 8 janvier, Farouk : mise-à-jour du Readme.md et ajout des docstrings et des fonctions tests.
 
 Lundi 8 janvier, Kénan: Fin de l'écriture des fonctions de test et ajout des méthodes et du mode d'emploi dans le fichier ReadMe.
+
+
+Source :
+
+https://cs108.epfl.ch/archive/20/e/STEG/STEG.html - Farouk
 
 ## toto
