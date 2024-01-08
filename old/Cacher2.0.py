@@ -46,6 +46,8 @@ for letter in message:
 logging.info('write image=%s', image_out_filename)
 image.save(image_out_filename)
 
+
+
 #Etape 3 : rendre R-G-B-A tous pair en faisant +1 lorsque impaire.
 
 #Etape 4 : fonction qui traite chaque ligne vertical de l'image, une par une, caractère par caractère.
