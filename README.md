@@ -92,6 +92,8 @@ Mardi 2 janvier, Farouk : continuation du code avec création de la limite de le
 
 Dimanche 7 janvier, Farouk : leger changement du code et revision du contenu.
 
+Dimanche 7 janvier, Kénan: début du code des fonctions de test
+
 Lundi 8 janvier, Farouk : mise-à-jour du Readme.md et ajout des docstrings et des fonctions tests.
 
 ## toto
