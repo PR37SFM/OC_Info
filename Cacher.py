@@ -152,7 +152,7 @@ def cacher_message(image_to_change,message,image_changed):
 
 
 
-"""
+
 message = input("Ecris-moi le message que tu veux cacher dans l'image: ")
 
 image_to_change = input("Ecris-moi le nom du fichier png de l'image où tu veux cacher un message: ")
@@ -160,4 +160,3 @@ image_to_change = input("Ecris-moi le nom du fichier png de l'image où tu veux 
 image_changed = input("Ecris le nom du fichier dans lequel ton image modifiée sera enregistrée: ")
 
 cacher_message(image_to_change,message,image_changed)
-"""
