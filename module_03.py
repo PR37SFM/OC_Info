@@ -1,9 +1,10 @@
 import os
+from PIL import Image
 
 def char_to_octet (char):
     """
     Cette fonction prends le paramètre char, qui represente un caractère dans la chaine de caractère du message entré, et va le transformer en octet, suivant sa valeur décimal en ASCII.
-    Elle prend en compte uniquement ce paramètre et renvoie sa forme binaire en octet.
+    Elle prend en compte uniquement ce paramètre et renvoie sa forme 'char' en binaire (en octet).
     
     inputs:
     - 1 string (caractère du message entré)
@@ -25,7 +26,7 @@ def char_to_octet (char):
 def octet_to_char (octet):
     """
     Cette fonction prends le paramètre octet, qui est la transcription d'un caractère du message caché en binaire, et va la transformer en caractère ASCII selon ce que l'octet donne decimal, puis en symbole.
-    Elle prend en compte uniquement ce paramètre et renvoie sa forme binaire en octet.
+    Elle prend en compte uniquement ce paramètre et renvoie sa forme binaire (octet) en caractère.
     
     inputs:
     - 1 string (octet trouvé par le programme)
@@ -78,12 +79,12 @@ def bit_in_pixel (pixel):
     
 def input_text(message, min_length, max_length):
     """
-    Cette fonction sert à demander à l'utilisateur du programme un message à dissimuler dans une image, sans que celui-ci ne soit trop petit (len(message) == 0) ou trop grand (superieur à la taille que l'image peut dissimuler).
+    Cette fonction sert à demander à l'utilisateur du programme un message (text) à dissimuler dans une image, sans que celui-ci ne soit trop petit (len(message) == 0) ou trop grand (superieur à la taille que l'image peut dissimuler).
     Il prends donc comme paramètre le message, qui demande à l'utilisateur quel est le message à dissimuler afin connaitre la taille qu'il represente, d'ou les deux autres paramètres, la longueur max et min du message.
     La longueur max du message a été calculé ultérieurement, il s'agit du nombre de pixel de l'image
     
     inputs:
-    - 1 string (message)
+    - 1 string (message de demande (quel est le message ?))
     - 2 int (longueur maximum et minimum du message, pour qu'il soit valide)
     
     output:
@@ -105,7 +106,6 @@ def input_filename(message):
     
     output:
     - 1 string (nom de l'image)    
-    
     """
     filename = input(message)
     while not os.path.isfile(filename):
@@ -120,3 +120,78 @@ def input_filename(message):
 #        filename_out = input(message)
 #    filename_out = filename_out + '.png'
 #    return filename_out
+
+
+
+def encrypt_image(image, message):
+    
+    image = image.convert('RGB')
+    
+    # ajouter le caractere de fin au message
+    message = message + chr(0)
+    coord_x = 0
+    coord_y = 0
+    
+    for char in message:
+        octet = char_to_octet(char)
+        for bit in octet:
+            old_pixel = image.getpixel((coord_x, coord_y))
+            new_pixel = modify_pixel (old_pixel, bit)
+            image.putpixel((coord_x, coord_y), new_pixel)
+            # coordonnées du prochain pixel
+            coord_x = coord_x + 1
+            if coord_x == image.width:
+                coord_x = 0
+                coord_y = coord_y + 1
+
+    return image     
+    
+
+def decrypt_image(image):
+    """
+    Cette fonction va retrouver le message caché dans l'image. Pour ce faire, il a besoin du path de l'image sous forme .png et déposé dans OC info, ou sinon du path (input).
+    Elle a donc uniquement besoin de son nom comme paramètre pour y acceder et retrouver le message.
+
+    inputs:
+    - 1 string (nom de l'image)
+    
+    output:
+    - 1 string (message caché)
+    """
+    
+    image = image.convert('RGB')
+    
+    message = ''
+    octet = ''
+    coord_x = 0
+    coord_y = 0
+    eom_found = 0
+    
+    while True:
+        pixel = image.getpixel((coord_x, coord_y)) 
+        bit = bit_in_pixel (pixel)
+        octet = octet + bit
+        # quand la taille = 8
+        if len(octet) == 8:
+            # si la fin du message stopper la boucle
+            if octet == '00000000':
+                eom_found = 1
+                break
+            # convertir en caractère, et recommencer
+            else:
+                char = octet_to_char(octet)
+                message = message + char
+                octet = ''
+        # coordonnées du prochain pixel
+        coord_x = coord_x + 1
+        if coord_x == image.width:
+            coord_x = 0
+            coord_y = coord_y + 1
+        # si c'est la fin de l'image, stopper
+        if coord_y == image.height:
+            break
+            
+    if eom_found == 1:
+        return message
+    else:
+        return ''

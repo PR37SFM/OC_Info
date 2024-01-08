@@ -4,10 +4,9 @@ Projet Kénan-Farouk
 
 Ce projet consiste à créer un module Python permettant de faire de la stéganographie dans des images. Autrement dit, le programme demandera à l'utilisateur le message qu'il veut dissimué ainsi que l'image qu'il veut utilisé. Et ensuite, le programme rendra la même image (un peu differente de l'intitiale) avec le message à dissimuler à l'interieur.
 
-Mode d'emploi:
+# Mode d'emploi:
 
 Méthode 1 :
-
 
 Avec script :
 
@@ -43,7 +42,6 @@ Retrouver :
 4.	Vous êtes sensé recevoir le message qui était caché.
 
 
-
 méthode 2:
 
 Avec script :
@@ -61,7 +59,7 @@ retrouver:
 3. Si le terminal indique 'pas de message', la mauvaise image a été inseré. Relancer le programme en indiquant la bonne image.
 
 
-Idée : 
+# Idée : 
 
 Méthode 1:
 
@@ -81,9 +79,6 @@ Retrouver, retrouver.py :
 2.	Il va compter le nombre de pixels avec une valeur R impair pour chaque colonne.
 3.	Il transformera chacun des résultats trouvés en caractère (string) en utilisant le tableau ascii.
 4.	En mettant chacun de ces caractères dans une chaine de caractère, il retrouvera le message caché.
-
-
-
 
 
 méthode 2:
@@ -111,8 +106,7 @@ Decrypt_03:
 5. Le programme imprime le message qu'il a trouvé, sauf s'il n'a pas traité le caractère [NULL] de ASCII.
 
 
-
-Explication de méthodes et algorithmes :
+# Explication de méthodes et algorithmes :
 
 Méthode 1:
 
@@ -167,6 +161,7 @@ decoder_message:
 5.	Lorsque le programme aura parcouru toutes les colonnes, la chaine de caractères sera le message caché.
 
 
+Méthode 2:
 
 
 
