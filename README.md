@@ -14,7 +14,7 @@ Avec script :
 Cacher :
 1.	Ouvrez le fichier python Cacher.py
 2.	Faite run le code.
-3.	Vous devez d’abord écrire le message que vous voulez cacher. Attention, chaque charactère de votre message doit être compris dans le petit tableau ascii (jusqu’à 127). Au-delà, il se peut que le message ne puisse pas être caché. Entrezvotre réponse.
+3.	Vous devez d’abord écrire le message que vous voulez cacher. Attention, chaque charactère de votre message doit être compris dans le petit tableau ascii (jusqu’à 127). Au-delà, il se peut que le message ne puisse pas être caché. Entrez votre réponse.
 4.	Ensuite, on vous demande le nom du fichier de votre image. Ce fichier doit être un fichier png et vous devez bien écrire le nom entier (avec .png). Si vous avec des problèmes, glissez l’image dans le dossier de VisualStudoCode. Entrez votre réponse.
 5.	Finalement, écrivez le nom du nouveau fichier png qui enregistrera l’image avec le message caché (avec à nouveau .png à la fin).
 6.	Votre message a bien été caché.
@@ -46,16 +46,19 @@ Retrouver :
 
 méthode 2:
 
+Avec script :
+
 cacher:
-1. Ouvrir fichier python nommé "Encrypt_03.py"
-2. Entrer le path de l'image, ainsi que le message.
+1. Ouvrir fichier python nommé "Encrypt_03.py" et executer le programme.
+2. Entrer le path de l'image (endroit où est déposé votre image au format png).
+3. Entrer un message avec des caractère ASCII de 0 à 255.
 3. Entrer le nouveau nom de l'image avec le message à l'interieur (optionnel).
 4. Ouvrir le fichier image qui est déposé au même endroit que l'image initiale.
 
 retrouver:
 1. Ouvrir fichier python nommé "Encrypt_03.py"
-2. Entrer le path de l'image.
-3. Si le terminal indique 'pas de message', la mauvaise image a été inseré, alors relancer le programme en indiquant la bonne image.
+2. Entrer le path de l'image modifié.
+3. Si le terminal indique 'pas de message', la mauvaise image a été inseré. Relancer le programme en indiquant la bonne image.
 
 
 Idée : 
@@ -96,16 +99,16 @@ Encrypt_03:
 8. Le programme prend la valeur Blue d'un pixel et, en fonction de chaque bit de l'octet, la rend/garde pair s'il s'agit de '0' ou la rend/garde impair s'il s'agit de '1'.
 9. Le programme remplace le pixel traité par le même pixel avec la couleur bleu traité.
 10. Le programme traite pixel par pixel, en commençant (0;0) et en progressant sur l'horizontale, puis s'il arrive au bout, passe à la ligne horizontale au-dessous.
-11. Le programme arrête de progresser quand tout les caractères du message ont été traitées.
+11. Le programme s'arrête quand tout les caractères du message ont été traitées, ainsi que le caractère [NULL] en ASCII.
 12. Le programme renvoie l'image avec le message dissimulé.
 
 Decrypt_03:
 
 1. Le programme demande le path de l'image et y accède. S'il ne l'a pas trouvé, il le redemande.
 2. Le programme prend la valeur Blue d'un pixel et, en fonction de sa parité, determine le bit '0' ou '1', jusqu'à former un octet.
-3. Le programme transforme l'octet en ASCII, puis en caractère, et recommence pour le prochaine octet, jusqu'à que celui-ci indique la valeur binaire du caractère [NULL] de ASCII.
+3. Le programme transforme l'octet en valeur décimale ASCII, puis en caractère, et recommence pour le prochaine octet, jusqu'à que celui-ci indique la valeur binaire du caractère [NULL] de ASCII.
 4. Le programme traite pixel par pixel, en commençant (0;0) et en progressant sur l'horizontale, puis s'il arrive au bout, passe à la ligne horizontale au-dessous.
-5. Le programme imprime le message qu'il a trouvé, sauf s'il n'a pas trouvé le caractère [NULL] de ASCII.
+5. Le programme imprime le message qu'il a trouvé, sauf s'il n'a pas traité le caractère [NULL] de ASCII.
 
 
 

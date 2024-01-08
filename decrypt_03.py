@@ -1,5 +1,5 @@
 from PIL import Image
-import logging 
+#import logging 
 from module_03 import bit_in_pixel, octet_to_char, input_filename
 
 #logging.basicConfig(level=logging.INFO)
