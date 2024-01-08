@@ -115,6 +115,7 @@ Méthode 1:
 
 Cacher, Cacher.py :
 
+ChangeRGB:
 1.	On veut que tout les pixels aient une valeur R pair.
 2.	Pour changer toutes le valeurs R en paires, il suffit de prendre les coordonnées (x,y) avec l’ensemble des x possible et l’ensemble des y possible et du parcourir tous ces points.
 3.	On va ensuite prendre la valeur R de chaque point.
@@ -122,20 +123,24 @@ Cacher, Cacher.py :
 5.	Et on intègre cette nouvelle valeur R au point (x,y) pour tous les pixels de l’image.
 6.	Tout les pixels ont une valeur R pair.
 
+Numerisermessage:
 1.	On veut créer une liste avec comme éléments la valeur en ascii de chaque caractère du message dans l’ordre.
 2.	Le message en string, on va créer une liste vide.
 3.	On parcourt chaque caractère du message et on ajoute à droite de la liste (append) la valeur numérique du ce caractère.
 4.	On return cette liste et voilà.
 
+liste_coordonnées_alea:
 1.	On veut créer une liste avec x coordonnées aléatoire de y tq : x est la valeur numérique d’un caractère du message et les valeurs de y doivent être compris dans la hauteur de l’image. On répétera ce processus pour chaque caractère du message en obtenant à chaque fois, pour le i-ème caractère du message, une liste avec x élément (x étant la valeur num. en ascii du i-ème élément du message) et chacun de ces élément des valeurs possibles de y différentes.
 2.	Il suffit d’utiliser random.sample en créant une liste avec l’ensemble des y possible (donc les entier de l’intervalle [0,hauteur de l’image]) et en donnant le nombre d’éléments à prendre (dans ce cas, x).
 3.	Il return cette liste et on peut maintenant cacher le message
 
+cache_nombre_sur_une_colonne:
 1.	On veut cacher le message sur une colonne.
 2.	Pour la colonne i de l’image, il suffit de prendre la liste des coordonnées y en choisissant comme nombre d’élément la valeur num. en ascii du i-ème caractère du message.
 3.	On va ensuite prendre comme coordonnée (i,y) (avec plusieurs y possibles) et à chaque point, ajouter 1 à la valeur R du pixel (donc rendant R pair).
 4.	On a donc, pour la i-ème colonne, x valeurs R impair (avec x la valeur num. en ascii du i-ème caractère du message)
 
+cacher_message:
 1.	On veut cacher tout le message
 2.	Il suffit de répéter l’algorithme d’avant sur toute la longueur du message (i varie donc de 0 à len(message) – 1).
 3.	On enregistre ensuite l’image modifiée (avec le message caché) sur un nouveau fichier png.
@@ -143,6 +148,7 @@ Cacher, Cacher.py :
 
 Retrouver, retrouver.py :
 
+compter_impair_colonne:
 1.	On veut compter le nombre d’impair par colonne.
 2.	Le programme créer une variable k de valeur 0.
 3.	Pour (x,y), on fixe x et on fait varier y sur toute la hauteur de l’image.
@@ -150,6 +156,7 @@ Retrouver, retrouver.py :
 5.	Si c’est impair, on ajoute 1 à la variable k.
 6.	On répète pour tout les y et on trouve le nombre de pixels avec un R impair.
 
+decoder_message:
 1.	On veut retrouver le message.
 2.	Le programme répète l’algo d’avant pour chaque colonne.
 3.	Pour chaque nombre de R impair par colonne, il transforme ce nombre en lettres avec le tableau ascii.
