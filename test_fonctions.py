@@ -2,7 +2,7 @@ from PIL import Image
 
 from Cacher import changeRGB, numeriser_message, liste_coordonnées_alea, cache_nombre_sur_une_colonne, cacher_message
 
-from retrouver import compter_impair_colonne, decoder_message
+from retrouver import decoder_message
 
 
 def test_changeRGB_general():
@@ -37,6 +37,10 @@ test_changeRGB_cas_255()
 
 
 def test_numeriser_message_general():
+    
+    """
+    Vérifier que les changement entre valeur ascii et caractère ne change pas le message
+    """
     message = numeriser_message("kstgsgrtgsr2734186012784gr^")
     message2 = ""
     for i in message:
@@ -49,6 +53,10 @@ test_numeriser_message_general()
 
 
 def test_numeriser_message_precis():
+    
+    """
+    Vérifier que la fonction numérise correctement différents caractères.
+    """
     assert numeriser_message("0") == [48]
     assert numeriser_message("K") == [75]
     assert numeriser_message("a") == [97]
@@ -61,6 +69,10 @@ test_numeriser_message_precis()
     
     
 def test_liste_coordonnées_alea():
+    """
+    Vérifie que chaque coordonnées léatoire que la fonction choisi est bien dans l'intervalle voulue (hauteur de l'image)
+    Et vérifie qu'il y a le bon nombre de coordonnées en comparant la longueur de la liste.
+    """
     img = Image.open("img_test.png")
     les_y = liste_coordonnées_alea(img.height, 2)
     for i in les_y:
@@ -90,6 +102,10 @@ test_liste_coordonnées_alea()
 
 
 def test_cache_nombre_sur_une_colonne():
+    
+    """
+    Vérifie qu'il y a le bon nombre de R avec une valeur impair par colonne avec différents messsages.
+    """
     img = Image.open("img_test.png")
     message = "Farouk"
     x = 2
@@ -148,7 +164,12 @@ def test_cache_nombre_sur_une_colonne():
 test_cache_nombre_sur_une_colonne()
 
 
-def test_cacher_message():
+def test_cacher_et_retrouver_message():
+    
+    """
+    Vérifie que la méthode de cacher et retrouver le message ne change pas le message en cours de route.
+    Donc on vérifie que la fonction cacher_message et decoder_message marche ensemble.
+    """
     image_to_change = "img_test.png"
     image_changed = "test_changed.png"
     
@@ -188,6 +209,4 @@ def test_cacher_message():
     assert a == b
     print("cacher_message ok")
     
-test_cacher_message()
-
-    
+test_cacher_et_retrouver_message()
