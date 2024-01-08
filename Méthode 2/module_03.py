@@ -124,7 +124,16 @@ def input_filename(message):
 
 
 def encrypt_image(image, message):
+    """
+    Cette fonction va cacher le message dans les valeur (couleur) des pixel de l'image.
+    Pour cela, le programme a besoin d'un message et d'une image.
+
+    inputs:
+    - 2 string (nom de l'image et message)
     
+    output:
+    - 1 string (nom de l'image avec les valeurs des couleurs des pixels modifiés)
+    """
     image = image.convert('RGB')
     
     # ajouter le caractere de fin au message
@@ -158,7 +167,6 @@ def decrypt_image(image):
     output:
     - 1 string (message caché)
     """
-    
     image = image.convert('RGB')
     
     message = ''
