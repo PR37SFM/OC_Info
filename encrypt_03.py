@@ -3,18 +3,18 @@ import os
 from PIL import Image
 from module_03 import char_to_octet, modify_pixel, input_text, input_filename
 
-logging.basicConfig(level=logging.INFO)
+#logging.basicConfig(level=logging.INFO)
 
 #image_in_filename = '/Users/maison/Downloads/warga.png'
 
 image_in_filename = input_filename("Entrez le path de l'image :")
-logging.info('open image=%s', image_in_filename)
+#logging.info('open image=%s', image_in_filename)
 image = Image.open(image_in_filename)
-logging.info('image height=%s width=%s size=%s', image.height, image.width, image.size)
+#logging.info('image height=%s width=%s size=%s', image.height, image.width, image.size)
 
 max_length =  int(image.height*image.width/8)
 max_length = max_length - 1 # last character is eom
-logging.info('max_size=%s', max_length)
+#logging.info('max_size=%s', max_length)
 message = input_text('Entrez le message :', 1, max_length)
 
 image_out_filename = input("Entrez le nouveau nom de l'image :")
@@ -47,6 +47,6 @@ for char in message:
             coord_x = 0
             coord_y = coord_y + 1
 
-logging.info('write image=%s', image_out_filename)
+#logging.info('write image=%s', image_out_filename)
 image.save(image_out_filename)
  

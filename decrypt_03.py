@@ -1,14 +1,14 @@
 from PIL import Image
-import logging
+import logging 
 from module_03 import bit_in_pixel, octet_to_char, input_filename
 
-logging.basicConfig(level=logging.INFO)
+#logging.basicConfig(level=logging.INFO)
 
 image_in_filename = input_filename("Entrez le path de l'image :")
 
-logging.info('open image=%s', image_in_filename)
+#logging.info('open image=%s', image_in_filename)
 image = Image.open(image_in_filename)
-logging.info('image height=%s width=%s size=%s', image.height, image.width, image.size)
+#logging.info('image height=%s width=%s size=%s', image.height, image.width, image.size)
 image = image.convert('RGB')
 
 message = ''
@@ -27,7 +27,7 @@ while True:
             break
         else:
             char = octet_to_char(octet)
-            logging.info('octet=%s char=%s coord=%s', octet, char, (coord_x, coord_y))
+#            logging.info('octet=%s char=%s coord=%s', octet, char, (coord_x, coord_y))
             message = message + char
             octet = ''
     # coord of next pixel
@@ -38,7 +38,7 @@ while True:
     if coord_y == image.height:
         break
 
-logging.info('eom_found=%s', eom_found)
+#logging.info('eom_found=%s', eom_found)
         
 if eom_found == 1:
     print(message)

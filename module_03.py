@@ -17,12 +17,6 @@ def octet_to_char (octet):
     octet_char = chr (octet_int)
     return octet_char
 
-"""
-  bit '0' - blue even : already ok
-  bit '0' - blue odd : remove 1 (255->254, 1->0)
-  bit '1' - blue even : add 1 (0->1, 254->255)
-  bit '1' - blue odd : already ok
-"""
 def modify_pixel (pixel, bit):
     old_blue = pixel[2]
     if bit == '0':

@@ -1,4 +1,4 @@
-from module_03 import char_to_octet, octet_to_char, modify_pixel, bit_in_pixel
+from module_03 import char_to_octet, octet_to_char, modify_pixel, bit_in_pixel, input_text
 
 def _test_char_to_octet():
     assert char_to_octet (' ') == '00100000'
@@ -39,3 +39,11 @@ def _test_bit_in_pixel():
     print("bit_in_pixel OK")
 
 _test_bit_in_pixel()
+
+def _test_input_text():
+    assert len (input_text ('entrez un message :', 1, 2)) > 0
+    assert len (input_text ('entrez un message :', 1, 2)) == 1 or 2
+    assert len (input_text ('entrez un message :', 1, 2)) < 3
+    print("input_text OK")
+
+_test_input_text()
