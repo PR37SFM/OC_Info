@@ -188,10 +188,14 @@ Lundi 1 janvier, Farouk : continuation du code avec création de 4 fonction pour
 Mardi 2 janvier, Farouk : continuation du code avec création de la limite de lecture du programme et du message (caractère [NULL] de ASCII) + création des inputs pour l'encryptage
                           + plusieurs essais et test des cas limites.
 
-Dimanche 7 janvier, Farouk : leger changement du code et revision du contenu.
-
 Dimanche 7 janvier, Kénan: début du code des fonctions de test
 
+
+Dimanche 7 janvier, Farouk : leger changement du code et revision du contenu.
+
+
 Lundi 8 janvier, Farouk : mise-à-jour du Readme.md et ajout des docstrings et des fonctions tests.
+
+Lundi 8 janvier, Kénan: Fin de l'écriture des fonctions de test et ajout des méthodes et du mode d'emploi dans le fichier ReadMe.
 
 ## toto
