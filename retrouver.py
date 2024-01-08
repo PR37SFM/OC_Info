@@ -1,7 +1,7 @@
 from PIL import Image
 
 
-def compter_impair_colonne (x,img):
+def compter_impair_colonne(x,img):
     """
     Cette fonction reçoit un int x (x représentant une colonne de l'image) et un string (le nom du fichier png de l'image qu'il veut décrypter).
     Cette fonction regardera la valeur R de chaque pixel de la colonne x et compte le ombre d'impair de la colonne.
@@ -45,7 +45,11 @@ def decoder_message(image_to_solve):
     return message
 
 
- 
+
+"""
+
 image_to_solve = input("Donne moi le nom du fichier qui contient le message caché: ")
 
 print(decoder_message(image_to_solve))
+
+"""
