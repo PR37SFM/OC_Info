@@ -46,10 +46,7 @@ def decoder_message(image_to_solve):
 
 
 
-"""
 
 image_to_solve = input("Donne moi le nom du fichier qui contient le message caché: ")
 
 print(decoder_message(image_to_solve))
-
-"""
