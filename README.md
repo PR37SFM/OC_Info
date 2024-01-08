@@ -6,18 +6,42 @@ Ce projet consiste à créer un module Python permettant de faire de la stégano
 
 Mode d'emploi:
 
+Méthode 1 :
 
-méthode 1:
 
-cacher:
-1. Ouvrir fichier python nommé "Cacher.py"
-2. Executer le code et suivre ordres.
-3. Si l'utilisateur souhaite utiliser la fonction qui cache un message dans une image tout seul, utiliser la fonction nommée "cacher_messager" (lire sa docstring)
+Avec script :
 
-retrouver:
-1. Ouvrir fichier python nommé "retrouver.py"
-2. Executer et suivre ordres
-3. Si l'utilisateur souhaite utiliser la fonction qui retrouver le message caché tout seul, utiliser la fonction nommée "decoder_message" (voir sa docstring)
+Cacher :
+1.	Ouvrez le fichier python Cacher.py
+2.	Faite run le code.
+3.	Vous devez d’abord écrire le message que vous voulez cacher. Attention, chaque charactère de votre message doit être compris dans le petit tableau ascii (jusqu’à 127). Au-delà, il se peut que le message ne puisse pas être caché. Entrezvotre réponse.
+4.	Ensuite, on vous demande le nom du fichier de votre image. Ce fichier doit être un fichier png et vous devez bien écrire le nom entier (avec .png). Si vous avec des problèmes, glissez l’image dans le dossier de VisualStudoCode. Entrez votre réponse.
+5.	Finalement, écrivez le nom du nouveau fichier png qui enregistrera l’image avec le message caché (avec à nouveau .png à la fin).
+6.	Votre message a bien été caché.
+
+Retrouver :
+1.	Ouvrez le fichier python retrouver.py
+2.	Faite run le code.
+3.	Écrivez le nom du fichier png de l’image dont vous voulez retrouver un message caché (avec .png à la fin).
+4.	Vous devez normalement recevoir le message caché.
+
+
+Sans script :
+
+Cacher :
+
+1.	Ouvrez le fichier python Cacher.py
+2.	Allez en bas du code et utilisez la fonction cacher_message(image_to_change,message,image_changed) 
+3.	Le premier argument est le nom du fichier png de l’image dans laquelle vous voulez cacher un message (avec .png à la fin).
+4.	Le deuxième argument est le message que vous voulez caché (avec chaque charactère devant se trouver dans la petite table ascii).
+5.	Le troisième argument est le nom que vous voulez attribué au nouveau fichier png dans lequel vous voulez enregistrer l’image avec le message caché.
+
+Retrouver : 
+1.	Ouvrez le fichier python retrouver.py
+2.	Allez en bas du code et utilisez la fonction decoder_message(image_to_solve)
+3.	L’argument image_to_solve est le nom du fichier png de l’image dont vous voulez retrouver un message caché (avec .png à la fin).
+4.	Vous êtes sensé recevoir le message qui était caché.
+
 
 
 méthode 2:
@@ -34,47 +58,29 @@ retrouver:
 3. Si le terminal indique 'pas de message', la mauvaise image a été inseré, alors relancer le programme en indiquant la bonne image.
 
 
+Idée : 
+
+Méthode 1:
+
+Cacher, Cacher.py :
+
+1.	Le programme reçoit une image de x pixels de longueur et y pixels de hauteur.
+2.	Le programme reçoit un message à cacher sur l’image
+3.	Le programme change la valeur R de chaque pixel de l’image en paire.
+4.	Chaque caractère du message est assigné à une colonne de pixel de l’image (le premier caractère va être caché sur la premier colonne, le deuxième caractère sur la deuxième colonne, etc.)
+5.	Ces caractères vont être converti en valeur numérique x grâce au tableau ascii.
+6.	Cette valeur x liée au i-ème caractère du message représente le nombre de pixels de la colonne i de l’image qui auront leur valeur R changée en impair
+7.	Donc si le message est ”a“, la première colonne aura x pixels avec une valeur R impaire (avec x la valeur numérique en ascii de a).
+
+Retrouver, retrouver.py : 
+
+1.	Le programme reçoit l’image avec un message caché.
+2.	Il va compter le nombre de pixels avec une valeur R impair pour chaque colonne.
+3.	Il transformera chacun des résultats trouvés en caractère (string) en utilisant le tableau ascii.
+4.	En mettant chacun de ces caractères dans une chaine de caractère, il retrouvera le message caché.
 
 
-dire comment utiliser:
-- le script (entiereté du code)
-- comment utiliser fonction qui cache le message
-- comment utiliser fonction qui retrouve message
 
-(
-1. L'utilisateur doit écrire une chaine caractère représentant le message qu'il veut cacher.
-2. L'utilisateur doit donner accès au programme à l'image qu'il souhait utiliser.
-3. L'utilisateur doit écrire le nouveau fichier que le programme va créé avec le message dissimulé.
-4. Le programme va renvoyer un nouveau fichier (avec le nom choisi par l'utilisateur) avec le message dissimulé à l'interieur.
-)
-
-
-méthode 1:
-
-caché:
-
-1. programme reçoit image
-2. programme recolte toutes les valeurs RGB de chaque pixel
-3. programme modifie valeur RGB pour qu'elles soient toutes pair
-4. porgramme reçoit message
-5. programme représente chaque lettre du message en valeur numérique (modulo 26)
-6. PS: chaque colonne de l'image représente la n-ième lettre
-7. Pour la lettre X de valeur numérique n, on modifiera n pixel en leur donnant des coordonnées impair
-8. Fait ça pour chaque lettre (par exemple, si espace, on change rien)
-9. renvoie image (message a été caché)
-
-recupéré:
-
-1. programme reçoit image avec message dissimulé
-2. programme compte combien de pixel avec coordonnées impair par colonne
-3. pour chaque colonne, programme transforme le nombre de coordonnées impair n en lettre X.
-4. fait ça pour chaque colonne
-5. renvoie l'ensemble des lettres (et donc le message)
-
-(
-pixel -> (x,y,z)
-(x+1,y,z)
-)
 
 
 méthode 2:
@@ -100,6 +106,60 @@ Decrypt_03:
 3. Le programme transforme l'octet en ASCII, puis en caractère, et recommence pour le prochaine octet, jusqu'à que celui-ci indique la valeur binaire du caractère [NULL] de ASCII.
 4. Le programme traite pixel par pixel, en commençant (0;0) et en progressant sur l'horizontale, puis s'il arrive au bout, passe à la ligne horizontale au-dessous.
 5. Le programme imprime le message qu'il a trouvé, sauf s'il n'a pas trouvé le caractère [NULL] de ASCII.
+
+
+
+Explication de méthodes et algorithmes :
+
+Méthode 1:
+
+Cacher, Cacher.py :
+
+1.	On veut que tout les pixels aient une valeur R pair.
+2.	Pour changer toutes le valeurs R en paires, il suffit de prendre les coordonnées (x,y) avec l’ensemble des x possible et l’ensemble des y possible et du parcourir tous ces points.
+3.	On va ensuite prendre la valeur R de chaque point.
+4.	On vérifie si R est déjà pair en utilisant les modulos, si ce n’est pas le cas, on ajoute 1 à R (pour R = 255, on fait -1).
+5.	Et on intègre cette nouvelle valeur R au point (x,y) pour tous les pixels de l’image.
+6.	Tout les pixels ont une valeur R pair.
+
+1.	On veut créer une liste avec comme éléments la valeur en ascii de chaque caractère du message dans l’ordre.
+2.	Le message en string, on va créer une liste vide.
+3.	On parcourt chaque caractère du message et on ajoute à droite de la liste (append) la valeur numérique du ce caractère.
+4.	On return cette liste et voilà.
+
+1.	On veut créer une liste avec x coordonnées aléatoire de y tq : x est la valeur numérique d’un caractère du message et les valeurs de y doivent être compris dans la hauteur de l’image. On répétera ce processus pour chaque caractère du message en obtenant à chaque fois, pour le i-ème caractère du message, une liste avec x élément (x étant la valeur num. en ascii du i-ème élément du message) et chacun de ces élément des valeurs possibles de y différentes.
+2.	Il suffit d’utiliser random.sample en créant une liste avec l’ensemble des y possible (donc les entier de l’intervalle [0,hauteur de l’image]) et en donnant le nombre d’éléments à prendre (dans ce cas, x).
+3.	Il return cette liste et on peut maintenant cacher le message
+
+1.	On veut cacher le message sur une colonne.
+2.	Pour la colonne i de l’image, il suffit de prendre la liste des coordonnées y en choisissant comme nombre d’élément la valeur num. en ascii du i-ème caractère du message.
+3.	On va ensuite prendre comme coordonnée (i,y) (avec plusieurs y possibles) et à chaque point, ajouter 1 à la valeur R du pixel (donc rendant R pair).
+4.	On a donc, pour la i-ème colonne, x valeurs R impair (avec x la valeur num. en ascii du i-ème caractère du message)
+
+1.	On veut cacher tout le message
+2.	Il suffit de répéter l’algorithme d’avant sur toute la longueur du message (i varie donc de 0 à len(message) – 1).
+3.	On enregistre ensuite l’image modifiée (avec le message caché) sur un nouveau fichier png.
+
+
+Retrouver, retrouver.py :
+
+1.	On veut compter le nombre d’impair par colonne.
+2.	Le programme créer une variable k de valeur 0.
+3.	Pour (x,y), on fixe x et on fait varier y sur toute la hauteur de l’image.
+4.	Pour chaque point (x,y), on regarde si la valeur R du pixel est pair ou impair avec les modulos.
+5.	Si c’est impair, on ajoute 1 à la variable k.
+6.	On répète pour tout les y et on trouve le nombre de pixels avec un R impair.
+
+1.	On veut retrouver le message.
+2.	Le programme répète l’algo d’avant pour chaque colonne.
+3.	Pour chaque nombre de R impair par colonne, il transforme ce nombre en lettres avec le tableau ascii.
+4.	Il suffit d’ajouter chacun de ces caractères sur une nouvelle chaines de caractères.
+5.	Lorsque le programme aura parcouru toutes les colonnes, la chaine de caractères sera le message caché.
+
+
+
+
+
 
 Journal de Bord:
 
