@@ -1,10 +1,10 @@
 from PIL import Image
 import logging
-from module_03 import bit_in_pixel, octet_to_char
+from module_03 import bit_in_pixel, octet_to_char, input_filename
 
 logging.basicConfig(level=logging.INFO)
 
-image_in_filename = 'warga_changed.png'
+image_in_filename = input_filename("Entrez le path de l'image :")
 
 logging.info('open image=%s', image_in_filename)
 image = Image.open(image_in_filename)

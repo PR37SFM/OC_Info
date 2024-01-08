@@ -1,7 +1,7 @@
 import logging
 import os
 from PIL import Image
-from module_03 import char_to_octet, modify_pixel, input_text, input_filename, input_new_filename
+from module_03 import char_to_octet, modify_pixel, input_text, input_filename
 
 logging.basicConfig(level=logging.INFO)
 

@@ -54,10 +54,10 @@ def input_filename(message):
         filename = input(message)
     return filename
 
-def input_new_filename(message, directory):
-    filename_out = input(message)
-    while len(filename_out) == 0:
-        print(f'! text is empty')
-        filename_out = input(message)
-    filename_out = filename_out + '.png'
-    return filename_out
+#def input_new_filename(message, directory):
+#    filename_out = input(message)
+#    while len(filename_out) == 0:
+#        print(f'! text is empty')
+#        filename_out = input(message)
+#    filename_out = filename_out + '.png'
+#    return filename_out

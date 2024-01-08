@@ -1,10 +1,11 @@
+from module_03 import char_to_octet, octet_to_char, modify_pixel, bit_in_pixel
 
 
-import logging
-import os
+def _test_char_to_octet():
+    assert char_to_octet ('a') == '01100001'
+    assert char_to_octet ('ä') == '11100100'
+    assert char_to_octet ('#') == '00100011'
+    assert char_to_octet ('') == '00000000'
+    print("char_to_octet OK")
 
-
-s = 'hello'
-
-print ('mon messaeg est {0}'.format(s))
-print (f'mon messaeg est {s}')
+_test_char_to_octet()

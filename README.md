@@ -5,6 +5,37 @@ Projet Kénan-Farouk
 Ce projet consiste à créer un module Python permettant de faire de la stéganographie dans des images. Autrement dit, le programme demandera à l'utilisateur le message qu'il veut dissimué ainsi que l'image qu'il veut utilisé. Et ensuite, le programme rendra la même image (un peu differente de l'intitiale) avec le message à dissimuler à l'interieur.
 
 Mode d'emploi:
+
+
+méthode 1:
+
+cacher:
+1. Ouvrir fichier python nommé "Cacher.py"
+2. Executer le code et suivre ordres.
+3. Si l'utilisateur souhaite utiliser la fonction qui cache un message dans une image tout seul, utiliser la fonction nommée "cacher_messager" (lire sa docstring)
+
+retrouver:
+1. Ouvrir fichier python nommé "retrouver.py"
+2. Executer et suivre ordres
+3. Si l'utilisateur souhaite utiliser la fonction qui retrouver le message caché tout seul, utiliser la fonction nommée "decoder_message" (voir sa docstring)
+
+
+méthode 2:
+
+cacher:
+1. Ouvrir fichier python nommé "Encrypt_03.py"
+2. Entrer le path de l'image, ainsi que le message.
+3. Entrer le nouveau nom de l'image avec le message à l'interieur (optionnel).
+4. Ouvrir le fichier image qui est déposé au même endroit que l'image initiale.
+
+retrouver:
+1. Ouvrir fichier python nommé "Encrypt_03.py"
+2. Entrer le path de l'image.
+3. Si le terminal indique 'pas de message', la mauvaise image a été inseré, alors relancer le programme en indiquant la bonne image.
+
+
+
+
 dire comment utiliser:
 - le script (entiereté du code)
 - comment utiliser fonction qui cache le message
