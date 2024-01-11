@@ -2,8 +2,8 @@ import os
 from PIL import Image
 from module_03 import char_to_octet, modify_pixel, input_text, input_filename, encrypt_image
 
-#image_in_filename = input_filename("Entrez le path de l'image :")
-image_in_filename = './nature.png'
+image_in_filename = input_filename("Entrez le path de l'image :")
+#image_in_filename = "/Users/Kenan/Documents/OC_Info_Projet/Méthode 2/nature.png"
 image_in = Image.open(image_in_filename)
 
 max_length = int(image_in.height*image_in.width/8)
