@@ -174,7 +174,28 @@ decoder_message:
 
 Méthode 2:
 
-Tout est indiqué dans les docstrings et plus haut, je n'ai rien de plus à ajouter (voir schéma_méthode_2.jpg).
+Algorithme pour cacher le message dans l'image :
+1. cacher lettre par lettre
+2. chaque lettre est convertie en ASCII sur 8 bits (ex: H = 00111010)
+3. chaque bit est caché dans la couleur bleu du pixel. (voir tableau). 50% des bleus de l'image sont potentiellement légèrement modifiés.
+4. un caractère spécial est ajouté pour détecter la fin du message
+
+| bit  | bleu initial | bleu final | action              | exemple    | 
+| ---- | ------------ | ---------- | ------------------- | ---------- | 
+|    0 | pair         | pair       | pas de modification | 240 -> 240 |
+|    0 | impair       | pair       | diminuer de 1       | 241 -> 240 |
+|    1 | pair         | impair     | ajout de 1          | 240 -> 241 |
+|    1 | impair       | impair     | pas de modification | 241 -> 241 |
+
+Résultats :
+- La taille maximale du message qu'on peut cacher est : (height * width de l'image) / 8 - 1. Exemple pur une image de 200 * 200, la taille maximale du message est : 4999 caractères
+- L'oeil humain ne peut détecter cette légère modification de la couleur bleue du pixel. Sa valeur, si elle est modifiée, est de 1/255 = 0.4%
+
+Remarques :
+- on peut multiplier la taille du message par 3, en modifiant les 3 couleurs du pixel suivant le même algorithme
+
+Source :
+- https://cs108.epfl.ch/archive/20/e/STEG/STEG.html
 
 
 Journal de Bord:
@@ -207,9 +228,5 @@ Lundi 8 janvier, Farouk : mise-à-jour du Readme.md et ajout des docstrings et d
 
 Lundi 8 janvier, Kénan: Fin de l'écriture des fonctions de test et ajout des méthodes et du mode d'emploi dans le fichier ReadMe.
 
-
-Source :
-
-https://cs108.epfl.ch/archive/20/e/STEG/STEG.html - Farouk
 
 ## toto
