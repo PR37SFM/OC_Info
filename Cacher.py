@@ -162,3 +162,4 @@ image_to_change = input("Ecris-moi le nom du fichier png de l'image où tu veux 
 image_changed = input("Ecris le nom du fichier dans lequel ton image modifiée sera enregistrée: ")
 
 cacher_message(image_to_change,message,image_changed)
+print("Hello")
